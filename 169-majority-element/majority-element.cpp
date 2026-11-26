@@ -1,19 +1,48 @@
-class Solution {
+// class Solution {
+// public:
+//     int majorityElement(vector<int>& nums) 
+//     {
+//         unordered_map<int,int>mp;
+//         for(int i=0;i<nums.size();i++)
+//         {
+//             mp[nums[i]]++;
+//         }
+//         for(auto it:mp)
+//         {
+//             if(it.second>nums.size()/2)
+//             {
+//                 return it.first;
+//             }
+//         }
+//         return -1;
+//     }
+// };
+
+
+
+
+class Solution 
+{
 public:
     int majorityElement(vector<int>& nums) 
     {
-        unordered_map<int,int>mp;
-        for(int i=0;i<nums.size();i++)
+       int cant=0;
+       int count=0;
+       for(int i=0;i<nums.size();i++)
+       {
+        if(count==0)
         {
-            mp[nums[i]]++;
+            cant=nums[i];
         }
-        for(auto it:mp)
+        if(nums[i]==cant)
         {
-            if(it.second>nums.size()/2)
-            {
-                return it.first;
-            }
+            count++;        //jb same element hoga 
         }
-        return -1;
+        else
+        {
+            count--;           //different element hoga
+        }
+       }
+       return cant;
     }
 };
